@@ -13,7 +13,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-
     private static Retrofit getRetrofit(){
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -25,5 +24,9 @@ public class ApiClient {
                 .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
                 .client(httpClient.build())
                 .build();
+    }
+
+    public static IForeignCurrency getApi(){
+        return ApiClient.getRetrofit().create(IForeignCurrency.class);
     }
 }
