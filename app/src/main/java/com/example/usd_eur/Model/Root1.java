@@ -4,5 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Root1 {
     @SerializedName("result")
-    public Result result;
+    private Result result;
+
+    public Result getResult() {
+        return result;
+    }
 }

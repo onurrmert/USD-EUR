@@ -5,14 +5,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.usd_eur.R;
-import com.example.usd_eur.Retrofit.ApiClient;
+import com.example.usd_eur.Model.Data1;
+import com.example.usd_eur.Room.ForeignCurrencyDb;
 import com.example.usd_eur.databinding.FragmentCurrentBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CurrentFragment extends Fragment {
 
@@ -37,5 +38,6 @@ public class CurrentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 }

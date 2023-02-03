@@ -6,7 +6,15 @@ import java.util.ArrayList;
 
 public class Result {
     @SerializedName("lastupdate")
-    public String lastupdate;
+    private String lastupdate;
     @SerializedName("data")
-    public ArrayList<Data1> data;
+    private ArrayList<Data1> data;
+
+    public String getLastupdate() {
+        return lastupdate;
+    }
+
+    public ArrayList<Data1> getData() {
+        return data;
+    }
 }
