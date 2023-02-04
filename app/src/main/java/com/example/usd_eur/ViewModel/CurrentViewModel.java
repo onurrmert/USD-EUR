@@ -2,7 +2,6 @@ package com.example.usd_eur.ViewModel;
 
 import android.content.Context;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -11,10 +10,8 @@ import com.example.usd_eur.Model.Root1;
 import com.example.usd_eur.Retrofit.ApiClient;
 import com.example.usd_eur.Room.ForeignCurrencyDb;
 import com.example.usd_eur.Utils.MoneyCode;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,30 +27,29 @@ public class CurrentViewModel extends ViewModel {
     private void getData(Context context, ArrayList<String> money){
 
         money.forEach(
-                it->{
-                    ApiClient.getApi().getUSD(it).enqueue(new Callback<Root1>() {
-                        @Override
-                        public void onResponse(@NonNull Call<Root1> call, @NonNull Response<Root1> response) {
-                            if (response.isSuccessful()){
-                                if (response.body() != null){
-                                    response.body().getResult().getData().forEach(
-                                        it->{
-                                            if (it.getCode().equals("TRY")){
-                                                System.out.println(it.getRate());
-                                                System.out.println("it.getRate()");
-                                                insert(it, context);
-                                            }
+            it->{
+                ApiClient.getApi().getUSD(it).enqueue(new Callback<Root1>() {
+                    @Override
+                    public void onResponse(@NonNull Call<Root1> call, @NonNull Response<Root1> response) {
+                        if (response.isSuccessful()){
+                            if (response.body() != null){
+                                response.body().getResult().getData().forEach(
+                                    it->{
+                                        if (it.getCode().equals("TRY")){
+                                            insert(it, context);
+                                            System.out.println("currentVM: " + it.getRate());
                                         }
-                                    );
-                                }
+                                    }
+                                );
                             }
                         }
-                        @Override
-                        public void onFailure(@NonNull Call<Root1> call, @NonNull Throwable t) {
-                            Log.e("error onFailure", t.getLocalizedMessage());
-                        }
-                    });
-                }
+                    }
+                    @Override
+                    public void onFailure(@NonNull Call<Root1> call, @NonNull Throwable t) {
+                        Log.e("error onFailure", t.getLocalizedMessage());
+                    }
+                });
+            }
         );
     }
 

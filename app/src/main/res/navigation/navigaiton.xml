@@ -14,11 +14,38 @@
             android:id="@+id/action_splashFragment_to_currentFragment"
             app:destination="@id/currentFragment"
             app:popUpTo="@id/splashFragment"
+            app:enterAnim="@anim/rigthtoleft1"
+            app:exitAnim="@anim/rigthtoleft2"
+            app:popEnterAnim="@anim/lefttorigth1"
+            app:popExitAnim="@anim/lefttorigth2"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/currentFragment"
         android:name="com.example.usd_eur.View.CurrentFragment"
         android:label="fragment_current"
-        tools:layout="@layout/fragment_current" />
+        tools:layout="@layout/fragment_current" >
+        <action
+            android:id="@+id/action_currentFragment_to_calculateFragment"
+            app:destination="@id/calculateFragment"
+            app:enterAnim="@anim/rigthtoleft1"
+            app:exitAnim="@anim/rigthtoleft2"
+            app:popEnterAnim="@anim/lefttorigth1"
+            app:popExitAnim="@anim/lefttorigth2"/>
+    </fragment>
+    <fragment
+        android:id="@+id/calculateFragment"
+        android:name="com.example.usd_eur.View.CalculateFragment"
+        android:label="fragment_calculate"
+        tools:layout="@layout/fragment_calculate" >
+        <action
+            android:id="@+id/action_calculateFragment_to_currentFragment"
+            app:destination="@id/currentFragment"
+            app:popUpTo="@id/calculateFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/rigthtoleft1"
+            app:exitAnim="@anim/rigthtoleft2"
+            app:popEnterAnim="@anim/lefttorigth1"
+            app:popExitAnim="@anim/lefttorigth2"/>
+    </fragment>
 </navigation>

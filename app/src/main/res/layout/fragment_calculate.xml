@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.CalculateFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_dolar_1"
+            style="@style/textStyle"
+            android:textSize="24sp"
+            android:layout_margin="20dp"
+            android:text="" />
+
+        <EditText
+            android:id="@+id/editDolar"
+            android:layout_width="300dp"
+            android:background="@drawable/edit_background"
+            android:textColor="@color/black"
+            android:layout_height="45dp"
+            android:textColorHint="#9E9C9C"
+            android:hint="₺ giriniz"
+            android:paddingLeft="10dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textDolar"
+            style="@style/textStyle"
+            android:layout_margin="10dp"
+            android:text="Dolar: " />
+
+        <Button
+            android:id="@+id/dolarBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="$" />
+
+        <EditText
+            android:id="@+id/editTurk"
+            android:layout_marginTop="40dp"
+            android:layout_width="300dp"
+            android:hint="$ giriniz"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_background"
+            android:textColor="@color/black"
+            android:textColorHint="#9E9C9C"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textTurk"
+            style="@style/textStyle"
+            android:layout_margin="10dp"
+            android:text="Lira: " />
+
+        <Button
+            android:id="@+id/turkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="₺" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

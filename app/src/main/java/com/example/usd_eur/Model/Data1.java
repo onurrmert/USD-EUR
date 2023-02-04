@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
 import com.google.gson.annotations.SerializedName;
 
 @Entity(tableName = "foreignCurrencyTable")
@@ -31,6 +30,7 @@ public class Data1 {
         this.code = code;
         this.rate = rate;
     }
+
     @Ignore
     public Data1(String name, String code, double rate) {
         this.name = name;
