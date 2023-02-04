@@ -11,6 +11,6 @@ public interface IForeignCurrency {
 
     //"https://api.collectapi.com/economy/currencyToAll?int=10&base=USD"
     @GET("economy/currencyToAll?int=10&")
-    @Headers("authorization:apikey 4TxjZiIgMlNtChq1aTTT8y:77ArgvxSOkqkcs47CLuyw3")
+    @Headers("authorization: apikey 59mrULyhBYIIF0DwN888ne:4X6sAZvGrB3VDszXhm7voJ")
     Call<Root1> getUSD(@Query("base") String base);
 }

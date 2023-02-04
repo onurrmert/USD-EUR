@@ -7,15 +7,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.usd_eur.Adapter.CurrentAdapter;
 import com.example.usd_eur.Model.Data1;
+import com.example.usd_eur.Utils.MoneyCode;
 import com.example.usd_eur.ViewModel.CurrentViewModel;
 import com.example.usd_eur.ViewModel.SplashViewModel;
 import com.example.usd_eur.databinding.FragmentCurrentBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CurrentFragment extends Fragment {
@@ -48,30 +54,37 @@ public class CurrentFragment extends Fragment {
 
         currentViewModel = new ViewModelProvider(requireActivity()).get(CurrentViewModel.class);
 
-        //viewModel = new ViewModelProvider(requireActivity()).get(SplashViewModel.class);
+        //currentViewModel.insertData(requireContext());
 
-        //viewModel.insertData(requireContext());
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
         getData();
     }
 
     private void getData(){
+
+        currentViewModel.getRoomData(requireContext());
+
         currentViewModel.moneyData.observe(getViewLifecycleOwner(), new Observer<List<Data1>>() {
             @Override
             public void onChanged(List<Data1> data1s) {
-                data1s.forEach(it->{
-                    System.out.println(it.getName());
-                    System.out.println(it.getCode());
-                    System.out.println(it.getRate());
-                    System.out.println(it.getName());
-                });
+
+                ArrayList<Data1> data1ArrayList = new ArrayList<>(data1s);
+                data1ArrayList.clear();
+                for (int i = 0; i < 6; i++){
+                    data1ArrayList.add(data1s.get(i));
+                }
+                initRecycler(data1ArrayList);
             }
         });
+    }
 
-        currentViewModel.getData(requireContext());
+    private void initRecycler(ArrayList<Data1> data1ArrayList){
+         binding.recyclerView.setAdapter(new CurrentAdapter(data1ArrayList, MoneyCode.getMoneyCode(), MoneyCode.getMoneyName()));
+         binding.recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
     }
 }

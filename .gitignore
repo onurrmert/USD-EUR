@@ -14,3 +14,4 @@
 .cxx
 local.properties
 /app/src/main/java/com/example/usd_eur/Utils/Constants.java
+/app/src/main/java/com/example/usd_eur/Utils/MoneyCode.java

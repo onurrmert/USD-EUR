@@ -7,21 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.usd_eur.R;
 import com.example.usd_eur.ViewModel.SplashViewModel;
 import com.example.usd_eur.databinding.FragmentSplashBinding;
 
 public class SplashFragment extends Fragment {
-
-    private FragmentSplashBinding binding;
-
-    private SplashViewModel viewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,10 +22,10 @@ public class SplashFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentSplashBinding.inflate(inflater, container, false);
+        FragmentSplashBinding binding = FragmentSplashBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -40,9 +33,14 @@ public class SplashFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //viewModel = new ViewModelProvider(requireActivity()).get(SplashViewModel.class);
+        SplashViewModel viewModel = new ViewModelProvider(requireActivity()).get(SplashViewModel.class);
 
-        //viewModel.insertData(requireContext());
+        //viewModel.delete(requireContext());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -51,7 +49,6 @@ public class SplashFragment extends Fragment {
             }
         }, 1200);
     }
-
 
     private void direction(){
         NavDirections navDirections = SplashFragmentDirections.actionSplashFragmentToCurrentFragment();
