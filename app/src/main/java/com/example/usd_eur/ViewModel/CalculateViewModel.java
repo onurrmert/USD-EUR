@@ -16,7 +16,11 @@ public class CalculateViewModel extends ViewModel {
         ForeignCurrencyDb foreignCurrencyDb = ForeignCurrencyDb.getDatabase(context);
 
         ForeignCurrencyDb.databaseExecutor.execute(()->{
-            moneyData.postValue(foreignCurrencyDb.foreignCurrencyDao().getAllMoney());
+            if (foreignCurrencyDb.foreignCurrencyDao().getAllMoney().size() > 0){
+                moneyData.postValue(foreignCurrencyDb.foreignCurrencyDao().getAllMoney());
+            }else {
+                System.out.println("CalculateViewModel list empty");
+            }
         });
     }
 }

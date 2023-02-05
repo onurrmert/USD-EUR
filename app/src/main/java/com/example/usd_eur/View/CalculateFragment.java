@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.usd_eur.Model.Data1;
 import com.example.usd_eur.ViewModel.CalculateViewModel;
 import com.example.usd_eur.databinding.FragmentCalculateBinding;
@@ -53,7 +55,11 @@ public class CalculateFragment extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(List<Data1> data1s) {
-                btnClick(data1s.get(0).getRate());
+                if (data1s.size() > 0){
+                    btnClick(data1s.get(0).getRate());
+                }else {
+                    Toast.makeText(requireContext(), "List is empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

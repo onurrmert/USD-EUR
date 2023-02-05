@@ -33,14 +33,16 @@ public class CurrentViewModel extends ViewModel {
                     public void onResponse(@NonNull Call<Root1> call, @NonNull Response<Root1> response) {
                         if (response.isSuccessful()){
                             if (response.body() != null){
-                                response.body().getResult().getData().forEach(
-                                    it->{
-                                        if (it.getCode().equals("TRY")){
-                                            insert(it, context);
-                                            System.out.println("currentVM: " + it.getRate());
+                                if (response.body().getResult().getData().size() > 0){
+                                    response.body().getResult().getData().forEach(
+                                        it->{
+                                            if (it.getCode().equals("TRY")){
+                                                insert(it, context);
+                                                System.out.println("currentVM data add: " + it.getRate());
+                                            }
                                         }
-                                    }
-                                );
+                                    );
+                                }
                             }
                         }
                     }

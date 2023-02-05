@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.usd_eur.Adapter.CurrentAdapter;
 import com.example.usd_eur.Model.Data1;
 import com.example.usd_eur.ViewModel.CurrentViewModel;
@@ -81,7 +83,12 @@ public class CurrentFragment extends Fragment {
                 if (data1s.size() > 0){
                     for (int i = 0; i < 8; i++){
                         data1ArrayList.add(data1s.get(i));
+                        binding.progressBar.setVisibility(View.GONE);
                     }
+                }else{
+                    binding.progressBar.setVisibility(View.VISIBLE);
+                    Toast.makeText(requireContext(), "List is empty", Toast.LENGTH_SHORT).show();
+                    System.out.println("list empty");
                 }
                 initRecycler(data1ArrayList);
             }
